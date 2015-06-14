@@ -23,16 +23,18 @@ date: The date on which the measurement was taken in YYYY-MM-DD format
 interval: Identifier for the 5-minute interval in which measurement was taken
 
 The dataset is stored in a comma-separated-value (CSV) file and there are a total of 17,568 observations in this dataset.
+1.Let's read the dataset into a dataframe calles "datact"
 
 ```{r, echo=TRUE}
 datact <- read.csv("activity.csv")
-
 ```
 
-You can also embed plots, for example:
+2. Let's calculate the mean total number of steps taken per day
 
-```{r, echo=FALSE}
-plot(cars)
+```{r, echo=TRUE}
+require(graphics)
+require(dplyr)
+m_tot<- summarize(group_by(datact, date),"total_steps"=sum(steps))
+hist(m_tot$total_steps)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
