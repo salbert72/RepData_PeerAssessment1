@@ -87,17 +87,31 @@ The total number of **missing values = 2304**
 
 Now let's fill in the missing values with the mean for the day
 
+```r
+datact2[is.na(datact2$steps),1] <- mean(datact2$steps, na.rm=TRUE)
+```
 
 ... then, let's display a histogram of the total number of steps taken each day 
 
+```r
+m_tot2<- summarize(group_by(datact2, date),"total_steps"=sum(steps))
+hist(m_tot2$total_steps, main="Total steps per day", xlab="Total steps")
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
 
 ..and finally, let's calculate the mean and median total number of steps taken per day.
 
 
+```r
+mean_total2 <- format(mean(m_tot2$total_steps),nsmall = 2)
+med_total2 <- format(median(m_tot2$total_steps),nsmall = 2)
+```
+
 Total number of steps taken per day:
 
-- MEAN    : without NA values 10766.19 same as with inputed mean values []
-- MEDIAN  : without NA values 10765 same as with inputed median values []
+- MEAN    : *without NA values* = **10766.19** same as *with inputed mean values* =  **10766.19**
+- MEDIAN  : *without NA values* = **10765** different than  *with inputed median values* = **10766.19**
 
 ###Conclusion:
 

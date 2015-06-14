@@ -69,23 +69,26 @@ The total number of **missing values = `r NA_Tot`**
 
 Now let's fill in the missing values with the mean for the day
 ```{r, echo=TRUE}
-
+datact2[is.na(datact2$steps),1] <- mean(datact2$steps, na.rm=TRUE)
 ```
 
 ... then, let's display a histogram of the total number of steps taken each day 
 ```{r, echo=TRUE}
-
+m_tot2<- summarize(group_by(datact2, date),"total_steps"=sum(steps))
+hist(m_tot2$total_steps, main="Total steps per day", xlab="Total steps")
 ```
 
 ..and finally, let's calculate the mean and median total number of steps taken per day.
-```{r, echo=TRUE}
 
+```{r, echo=TRUE}
+mean_total2 <- format(mean(m_tot2$total_steps),nsmall = 2)
+med_total2 <- format(median(m_tot2$total_steps),nsmall = 2)
 ```
 
 Total number of steps taken per day:
 
-- MEAN    : without NA values `r mean_total` same as with inputed mean values []
-- MEDIAN  : without NA values `r med_total` same as with inputed median values []
+- MEAN    : *without NA values* = **`r mean_total`** same as *with inputed mean values* =  **`r mean_total2`**
+- MEDIAN  : *without NA values* = **`r med_total`** different than  *with inputed median values* = **`r med_total2`**
 
 ###Conclusion:
 
