@@ -1,10 +1,4 @@
----
-title: "PA1_template.Rmd"
-output:
-  html_document:
-    fig_caption: yes
-    keep_md: yes
----
+# PA1_template.Rmd
 
 #Introduction
 
@@ -29,7 +23,8 @@ total of 17,568 observations in this dataset.
 
 ###1.Let's read the dataset into a dataframe calles "datact"
 
-```{r, echo=TRUE}
+
+```r
 datact <- read.csv("activity.csv")
 ## duplicate the data into a new dataframe for future use ...
 datact2 <- datact
@@ -40,52 +35,69 @@ datact <- datact[!is.na(datact$steps),]
 ###2. Calculate the mean total number of steps taken per day, draw the histogram of
 total steps taken each day
 
-```{r loadlibs, echo=TRUE}
+
+```r
 require(graphics)
 require(dplyr)
+```
+
+```
+## Loading required package: dplyr
+## 
+## Attaching package: 'dplyr'
+## 
+## The following object is masked from 'package:stats':
+## 
+##     filter
+## 
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
 m_tot<- summarize(group_by(datact, date),"total_steps"=sum(steps))
 ```
 
-```{r hist1, fig.width = 7, fig.height=6, results='asis'}
+
+```r
 hist(m_tot$total_steps, main="Total steps per day", xlab="Total steps")
 ```
 
-```{r MeanMed1, echo=TRUE}
+![](PA1_template_files/figure-html/hist1-1.png) 
+
+
+```r
 mean_total <- mean(m_tot$total_steps)
 med_total <- median(m_tot$total_steps)
 ```
 
-Total number of steps per day **mean = `r mean_total`** while the **median = `r med_total`**
+Total number of steps per day **mean = 1.0766189\times 10^{4}** while the **median = 10765**
 
 ###3. Display average daily activity pattern as a time series plot
 
 
 ###4. Inputing missing values
-```{r, echo=TRUE}
+
+```r
 NA_Tot <- sum(is.na(datact2$steps))
 ```
 
-The total number of **missing values = `r NA_Tot`**
+The total number of **missing values = 2304**
 
 Now let's fill in the missing values with the mean for the day
-```{r, echo=TRUE}
 
-```
 
 ... then, let's display a histogram of the total number of steps taken each day 
-```{r, echo=TRUE}
 
-```
 
 ..and finally, let's calculate the mean and median total number of steps taken per day.
-```{r, echo=TRUE}
 
-```
 
 Total number of steps taken per day:
 
-- MEAN    : without NA values `r mean_total` same as with inputed mean values []
-- MEDIAN  : without NA values `r med_total` same as with inputed median values []
+- MEAN    : without NA values 1.0766189\times 10^{4} same as with inputed mean values []
+- MEDIAN  : without NA values 10765 same as with inputed median values []
 
 ###Conclusion:
 
