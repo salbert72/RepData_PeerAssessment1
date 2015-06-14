@@ -117,3 +117,5 @@ Total number of steps taken per day:
 
 The impact of inputing missing data on the estimates of the total daily number 
 of steps is :
+
+The results differ based on whether NA values are being replaced with either **mean** or **median** values for the day
