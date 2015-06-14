@@ -37,19 +37,22 @@ datact <- datact[!is.na(datact$steps),]
 ###2. Calculate the mean total number of steps taken per day, draw the histogram of
 total steps taken each day
 
-```{r loadlibs, results="hide"}
+```{r loadlibs, echo=TRUE}
 require(graphics)
 require(dplyr)
-```
-```{r loaddata, echo=TRUE}
 m_tot<- summarize(group_by(datact, date),"total_steps"=sum(steps))
-hist(m_tot$total_steps, main="Total steps per day", xlab="Total steps")
+```
 
+```{r hist1, fig.width = 7, fig.height=6, results='asis'}
+hist(m_tot$total_steps, main="Total steps per day", xlab="Total steps")
+```
+
+```{r MeanMed1, echo=TRUE}
 mean_total <- mean(m_tot$total_steps)
 med_total <- median(m_tot$total_steps)
 ```
 
-Total number of steps per day mean = `r mean_total` while the median = `r med_total`
+Total number of steps per day **mean = `r mean_total`** while the **median = `r med_total`**
 
 ###3. Display average daily activity pattern as a time series plot
 
@@ -59,7 +62,7 @@ Total number of steps per day mean = `r mean_total` while the median = `r med_to
 NA_Tot <- sum(is.na(datact2$steps))
 ```
 
-The total number of **missing values = `r NA_Tot`*
+The total number of **missing values = `r NA_Tot`**
 
 Now let's fill in the missing values with the mean for the day
 ```{r, echo=TRUE}
@@ -77,6 +80,7 @@ Now let's fill in the missing values with the mean for the day
 ```
 
 Total number of steps taken per day:
+
 - MEAN    : without NA values `r mean_total` same as with inputed mean values []
 - MEDIAN  : without NA values `r med_total` same as with inputed median values []
 
