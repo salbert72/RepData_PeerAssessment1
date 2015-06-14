@@ -51,8 +51,8 @@ hist(m_tot$total_steps, main="Total steps per day", xlab="Total steps")
 ```
 
 ```{r MeanMed1, echo=TRUE}
-mean_total <- mean(m_tot$total_steps)
-med_total <- median(m_tot$total_steps)
+mean_total <- format(mean(m_tot$total_steps),nsmall = 2)
+med_total <- format(median(m_tot$total_steps),nsmall = 2)
 ```
 
 Total number of steps per day **mean = `r mean_total`** while the **median = `r med_total`**

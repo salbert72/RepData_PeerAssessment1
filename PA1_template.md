@@ -68,11 +68,11 @@ hist(m_tot$total_steps, main="Total steps per day", xlab="Total steps")
 
 
 ```r
-mean_total <- mean(m_tot$total_steps)
-med_total <- median(m_tot$total_steps)
+mean_total <- format(mean(m_tot$total_steps),nsmall = 2)
+med_total <- format(median(m_tot$total_steps),nsmall = 2)
 ```
 
-Total number of steps per day **mean = 1.0766189\times 10^{4}** while the **median = 10765**
+Total number of steps per day **mean = 10766.19** while the **median = 10765**
 
 ###3. Display average daily activity pattern as a time series plot
 
@@ -96,7 +96,7 @@ Now let's fill in the missing values with the mean for the day
 
 Total number of steps taken per day:
 
-- MEAN    : without NA values 1.0766189\times 10^{4} same as with inputed mean values []
+- MEAN    : without NA values 10766.19 same as with inputed mean values []
 - MEDIAN  : without NA values 10765 same as with inputed median values []
 
 ###Conclusion:
