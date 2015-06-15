@@ -136,6 +136,12 @@ med_total2 &lt;- format(median(m_tot2$total_steps),nsmall = 2)</code></pre>
 <li>MEDIAN : <em>without NA values</em> = <strong>10765</strong> different than <em>with inputed median values</em> = <strong>10766.19</strong></li>
 </ul>
 </div>
+<div id="differences-in-activity-patterns-between-weekdays-and-weekends" class="section level3">
+<h3>5. Differences in activity patterns between weekdays and weekends</h3>
+<pre class="r"><code>datact2$ISWE &lt;- weekdays(as.Date(datact2$date))
+datact2$ISWE &lt;- (datact2$ISWE == &quot;Sunday&quot; | datact2$ISWE == &quot;Saturday&quot;)
+datact2$ISWE &lt;- factor(datact2$ISWE, labels =c(&quot;weekdays&quot;, &quot;weekend&quot;))</code></pre>
+</div>
 <div id="conclusion" class="section level3">
 <h3>Conclusion:</h3>
 <p>The impact of inputing missing data on the estimates of the total daily number of steps is :</p>

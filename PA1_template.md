@@ -113,6 +113,16 @@ Total number of steps taken per day:
 - MEAN    : *without NA values* = **10766.19** same as *with inputed mean values* =  **10766.19**
 - MEDIAN  : *without NA values* = **10765** different than  *with inputed median values* = **10766.19**
 
+###5. Differences in activity patterns between weekdays and weekends
+
+
+```r
+datact2$ISWE <- weekdays(as.Date(datact2$date))
+datact2$ISWE <- (datact2$ISWE == "Sunday" | datact2$ISWE == "Saturday")
+datact2$ISWE <- factor(datact2$ISWE, labels =c("weekdays", "weekend"))
+```
+
+
 ###Conclusion:
 
 The impact of inputing missing data on the estimates of the total daily number 
